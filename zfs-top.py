@@ -2,6 +2,7 @@ import os
 import time
 
 objset_dir = "/proc/spl/kstat/zfs/lxd"
+sleep_interval = 1
 
 
 def get_dataset_name(objset_id):
@@ -82,7 +83,7 @@ def main():
             objset_results[objset_id]["reads_iops_{}".format(test_id)] = get_dataset_reads(objset_id)
             objset_results[objset_id]["reads_bandwidth_{}".format(test_id)] = get_dataset_nread(objset_id)
 
-        time.sleep(2)
+        time.sleep(sleep_interval)
 
     # Set variables for cumulative total IOPS and bandwidth
     writes_iops_p_second_total = 0
